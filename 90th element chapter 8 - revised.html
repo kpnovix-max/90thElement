@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 90th Element — Chapter Eight</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Josefin+Sans:wght@200;300;400&display=swap');
+
+  :root {
+    --ink: #1a1a1a;
+    --gold: #b8972a;
+    --dim: #555;
+    --rule: #d0c8b0;
+    --bg: #faf8f4;
+    --accent: #f2ede3;
+    --dark: #12121e;
+    --deep-green: #0a1a12;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    line-height: 2.0;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 70px 40px 140px;
+  }
+
+  .book-header {
+    text-align: center;
+    margin-bottom: 70px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .book-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+  .book-number {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 64px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+
+
+  .chapter-header { margin-bottom: 56px; }
+  .chapter-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .chapter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .chapter-date {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--dim);
+    margin-bottom: 32px;
+  }
+  .chapter-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 40px;
+  }
+  .epigraph {
+    font-style: italic;
+    font-size: 17px;
+    color: var(--dim);
+    border-left: 2px solid var(--rule);
+    padding-left: 20px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+  }
+
+  /* Music note */
+
+
+  p {
+    margin-bottom: 28px;
+    font-weight: 300;
+    color: #1e1e1e;
+    font-size: 19px;
+    line-height: 2.0;
+  }
+
+  .section-break {
+    text-align: center;
+    margin: 52px 0;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 0.4em;
+  }
+
+  .science-note {
+    background: var(--accent);
+    border-left: 2px solid var(--gold);
+    padding: 22px 28px;
+    margin: 36px 0;
+    font-size: 17px;
+    line-height: 1.85;
+    font-style: italic;
+    color: #333;
+  }
+
+  .interior {
+    font-size: 21px;
+    font-style: italic;
+    color: var(--ink);
+    text-align: center;
+    padding: 36px 40px;
+    margin: 44px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+
+
+  /* WeChat messages — the domestic texture */
+  .wechat {
+    background: var(--accent);
+    border: 1px solid var(--rule);
+    padding: 22px 28px;
+    margin: 40px 0;
+    font-size: 17px;
+    line-height: 1.85;
+  }
+  .wechat .wechat-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--dim);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .wechat-msg {
+    margin-bottom: 14px;
+    font-style: italic;
+    color: #2a2a2a;
+    padding-left: 16px;
+    border-left: 2px solid var(--rule);
+    font-size: 17px;
+  }
+  .wechat-sender {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+    font-style: normal;
+  }
+
+
+
+  .chapter-footer {
+    margin-top: 90px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .footer-right {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+</style>
+</head>
+<body>
+
+<div class="book-header">
+  <div class="book-title">The 90th Element</div>
+  <div class="book-number">90</div>
+</div>
+
+
+
+<div class="chapter-header">
+  <span class="chapter-label">Chapter Eight</span>
+  <div class="chapter-title">Shanghai and<br>Wuwei, 2011</div>
+  <div class="chapter-date">March – December 2011</div>
+  <div class="chapter-rule"></div>
+  <div class="epigraph">
+    "She had read their notes. It felt less like discovery<br>
+    and more like inheriting a house from someone<br>
+    she had never met."
+  </div>
+</div>
+
+
+
+<p>
+The city that Mei Lin left behind when she boarded the train to Wuwei in October of 2011 was not the Shanghai of five years earlier — not even close. The Shanghai she had arrived in as a postgraduate student, the city that had received her from Beijing with its particular combination of ambition and mercantile energy, had already been a city in full acceleration. But the Shanghai of 2011 had gone further still — towers that had not existed when she arrived, whole districts reorganised around metro lines that had not yet been drawn when she first took the ferry across the Huangpu, the specific restlessness of a city that was remaking itself faster than any individual could track, so that the act of knowing Shanghai required constant updating, as though the city were a document being revised in real time. She had lived here for six years. She had never entirely stopped being surprised by it.
+</p>
+
+<p>
+Mei Lin had grown up in Beijing, in the Haidian district, in an apartment near Peking University where her father taught condensed matter physics. It was a household of books and arguments and the specific quality of intellectual seriousness that Chinese academic families of that generation carried — not ostentatiously, not as a performance of culture, but as a working assumption about how time should be spent and what questions were worth asking. Her parents had separated when she was twelve, without drama and without particular bitterness — two people who had grown into different directions and had the good sense to acknowledge it. Her mother had moved to Shanghai, where she had family, and had eventually found work managing the administrative office of a secondary school in the Jing'an district. Mei Lin had spent her adolescence moving between the two cities, the train between Beijing and Shanghai becoming so familiar that she could sleep through the departure and wake instinctively as it approached the other end. She had been good at mathematics from the age when such things become apparent, which in China was earlier than in most places because the system that identified mathematical ability was thorough and early and redirected the people it found toward the institutions and curricula that would develop what it had found. She had been redirected to the right schools, then to Peking University, where she had studied physics — her father's city, her father's world. Then to the Shanghai Institute of Applied Physics for her postgraduate work, where she had specialised in the thermodynamics of high-temperature fluid systems. Shanghai again. Her mother's flat in Jing'an, the spare room that had always been kept as hers, the television audible through the wall in the evenings.
+</p>
+
+<p>
+She was twenty-eight years old in the spring of 2011 when Professor Chen called her into his office and told her about the TMSR programme.
+</p>
+
+<div class="section-break">· · ·</div>
+
+<p>
+Professor Chen Jianhua was sixty-two and had the compact, precise manner of a man who had spent four decades in a field that rewarded precision and had internalised its standards completely. He had been at SINAP — the Shanghai Institute of Applied Physics of the Chinese Academy of Sciences — for thirty years, had built a research group of considerable reputation in fluoride salt chemistry, and had, in the past eighteen months, been spending more time in Beijing than in Shanghai, attending meetings whose subjects he discussed with his group in general terms only. His group understood this to mean that something large was being decided at a level above the laboratory, which was the kind of thing that happened periodically in Chinese science and which required patience — you kept doing the work, you stayed current in the literature, and when the large thing had been decided you would be told what it was and what your role in it would be.
+</p>
+
+<p>
+The large thing had been decided. It was the Thorium Molten Salt Reactor programme. The Chinese Academy of Sciences had approved it. The funding was committed. The site in Wuwei, Gansu Province — in the corridor of the Gobi Desert along the Hexi Corridor, the ancient route of the Silk Road — had been selected. The programme would build an experimental reactor, two megawatts thermal, using liquid fluoride salt as both fuel carrier and coolant, running on a uranium-thorium fuel mixture, designed to demonstrate the conversion of thorium to uranium-233 in a functioning reactor system. If the experiment succeeded, it would be the first time in forty-two years that a molten salt reactor had operated anywhere in the world. The last one had been at Oak Ridge. That one had been shut down in 1969.
+</p>
+
+<p>
+Chen told Mei Lin this over twenty minutes, with the directness of a man who does not believe in obscuring good news. He told her that the programme needed people with her specific expertise — high-temperature fluoride salt thermodynamics, the behaviour of fission products in liquid fuel systems — and that she was being offered a position on the TMSR experimental team at the Wuwei site. She would need to relocate. The work would be demanding. The timeline was long. The site was remote. He said these things without softening them because softening them would have been a disservice to someone he wanted to give a clear picture.
+</p>
+
+<p>
+He then told her one more thing. He said: the programme is building on existing science. The Americans did this work in the 1960s. Their results are in the open literature — everything, completely available, the full experimental record of their reactor. He slid a piece of paper across the desk. On it was an ORNL document number: ORNL-4812. He said: read this first. Before you decide.
+</p>
+
+<p>
+She said she would think about it. She went back to her office, which was a shared space in the SINAP building in the Jiading district of Shanghai, a room with four desks and a window that overlooked a car park and a slice of the ring road beyond it, and she opened her laptop and went to the Oak Ridge National Laboratory digital archive and typed in the document number.
+</p>
+
+<p>
+It took forty-one seconds to download.
+</p>
+
+<div class="section-break">· · ·</div>
+
+<p>
+She read ORNL-4812 that afternoon and into the evening. She was still at her desk at nine o'clock, the car park outside the window empty now, the ring road audible as a distant, continuous sound, the office silent around her. Her phone had produced a series of notifications during the afternoon — WeChat messages from her mother, a reminder about a seminar she was supposed to attend, two messages from a friend planning a dinner — and she had seen them appear on the screen and left them there, unread, in the peripheral way that you defer things when the central thing is sufficiently interesting.
+</p>
+
+<p>
+The document was technically dense in the way that experimental physics documents are dense — full of measurement data, reactor physics calculations, chemistry results, the accumulated evidence of four years of operation — and she worked through it with the care it required, checking her understanding against the physics she knew, making notes on the sections that had direct relevance to her own expertise. The fluoride salt chemistry was exactly in her domain. The fission product behaviour in the liquid fuel was precisely the kind of problem she had been working on theoretically. She read these sections with the specific pleasure of encountering experimental data that illuminated questions she had been thinking about abstractly, the pleasure of theory meeting reality in a document from forty-two years ago.
+</p>
+
+<p>
+But it was not the technical sections that stayed with her. It was the summary at the end. The summary that Weinberg had written on the afternoon of the shutdown, in the November of 1969, that she did not know had been written in a dark office with a Beethoven quartet fading on the phonograph and eight notebooks stacked on the desk. She did not know any of that. She knew only the text.
+</p>
+
+<div class="science-note">
+  The experiment has demonstrated the technical feasibility of the molten fluoride salt reactor concept. The fuel salt system operated reliably over extended periods. Fission product behaviour in the liquid fuel was characterised in detail. The results support the conclusion that a molten salt reactor operating on a thorium fuel cycle is technically achievable at larger scale, subject to resolution of materials corrosion questions and development of continuous fuel processing capability.<br><br>
+  It worked. The fuel salt circulated. The chain reaction sustained itself. The thorium conversion chemistry proceeded as predicted. What remains is engineering, not physics.
+</div>
+
+<p>
+She read this paragraph three times. She was not reading it for the technical content — she had absorbed the technical content in the pages before it. She was reading it for something else, something in the specific quality of the writing, which was the writing of a man who had just been told his programme was ending and was saying, in the plainest language he could find, what the programme had actually shown. <em>It worked.</em> Two words. No qualification. No caveat. The simplest possible statement of the most important result.
+</p>
+
+<p>
+She thought about the gap. 1969 to 2011. Forty-two years. An entire working life — two entire working lives. The reactor had worked in 1969 and nobody had built another one. Not anywhere. Not for forty-two years. She understood, from the institutional history she knew and the context that surrounded the document, the broad outlines of why — the Cold War priorities, the weapons programme requirements, the AEC's preference for the light water reactor, the institutional momentum of a technology already in commercial deployment. She understood the broad outlines. They did not make the gap smaller. They explained it without making it less strange.
+</p>
+
+<p>
+She sat with an uncomfortable thought for a moment, in the empty office, the car park dark outside. The thought was this: the work she was being asked to do had already been done. Not approximately, not in principle — specifically, concretely, in a reactor that had run for four years and produced a final report that said the thing worked and what remained was engineering. The people who had done that work were American. Weinberg — she looked him up, quickly, in another tab — had died in 2006. The junior researchers who had operated the reactor would be in their seventies now, if they were alive. She was being asked to repeat their experiment in a different desert on the other side of the world, because the programme they had built had been shut down for reasons that had nothing to do with the physics. Was this her achievement to claim? Was the work hers if the foundations of it had been laid by people who were now dead and who had never heard of her and who had not intended their work to wait forty-two years in an archive for a twenty-eight-year-old in Shanghai to download in forty-one seconds? She held this question for perhaps two minutes. Then she set it aside. The physics did not care who built the reactor. The thorium did not care who converted it. The gap of forty-two years was real and it was the reason she was being offered the position, and the position was worth taking, and the discomfort of the inheritance question was a real discomfort and also, ultimately, not the point. The point was the work.
+</p>
+
+<p>
+She scrolled through the notifications and opened her mother's messages, which were three in a row, sent over the afternoon, with the specific timing of a parent who has sent one message and waited and sent another — the fish getting colder with each one.
+</p>
+
+<div class="wechat">
+  <span class="wechat-label">WeChat — Mei Lin and her mother — March 2011</span>
+  <div class="wechat-msg">
+    <span class="wechat-sender">Mother · 14:23</span>
+    Are you coming home for dinner? I made the fish you like.
+  </div>
+  <div class="wechat-msg">
+    <span class="wechat-sender">Mother · 16:45</span>
+    Mei Lin? The fish will be cold.
+  </div>
+  <div class="wechat-msg">
+    <span class="wechat-sender">Mother · 18:30</span>
+    I put it in the refrigerator. Come when you can. Is everything okay?
+  </div>
+</div>
+
+<p>
+She closed the laptop. She picked up her phone. The office was silent around her, the car park dark outside, the ring road a distant hum. She could picture her mother at home — the fish long since refrigerated, the television on, the lamp in the sitting room. She typed her reply.
+</p>
+
+<div class="wechat">
+  <span class="wechat-label">WeChat — Mei Lin and her mother — March 2011</span>
+  <div class="wechat-msg">
+    <span class="wechat-sender">Mei Lin · 21:14</span>
+    Working late. Everything is fine. I'll tell you about it when I see you. Don't wait up.
+  </div>
+</div>
+
+<p>
+She sent it and sat for a moment longer in the empty office, the notification from her mother replaced by the steady silence of a building at night. Then she reopened her laptop and went back to the document. There were sections she had read quickly that she wanted to read again more carefully, sections on the corrosion of the structural materials by the fluoride salt over extended operation, which was one of the engineering problems the summary had identified and which was directly in her domain. If she was going to take the position — and she had not yet decided, she told herself, though she was aware that the forty-two seconds of scrolling and the two hours of careful reading had already decided something — she needed to understand exactly what the Americans had found and what it meant for the design work she would be doing.
+</p>
+
+<p>
+She read until midnight. Then she went home.
+</p>
+
+<div class="section-break">· · ·</div>
+
+<p>
+She told Chen yes the following morning. He nodded, unsurprised. He said: you start in October. There is a great deal to read before then.
+</p>
+
+<p>
+The months between March and October were the months of preparation — reading, learning, absorbing the body of literature that surrounded the TMSR programme, which was larger than she had expected and smaller than it should have been. Larger because the theoretical and computational work on molten salt reactors had continued in scattered research groups around the world even in the decades when no experimental programme had been running — papers from American universities, from European research institutes, from Indian journals that she found in database searches and read with a particular interest because India's approach to the thorium problem was so different from the one she was being recruited into. The Indian papers were about breeding, about fast reactors, about the three-stage programme that was doing the thorium conversion through a completely different technological pathway. She read them carefully. The physics was the same. The engineering was entirely different. Two countries with the same problem and the same raw material had arrived, independently, at solutions that shared a destination and nothing else.
+</p>
+
+<p>
+Smaller because the forty-two years of institutional absence had left a gap in the experimental literature that no amount of theoretical work could fill. The MSRE papers and the ORNL-4812 summary were still the most comprehensive dataset on actual molten salt reactor operation that existed. Everything else was modelling, simulation, inference from related experiments. The foundation was solid but it was forty-two years old, and everything built on it since had been built in the absence of the experimental programme that should have continued from where Weinberg's team had stopped.
+</p>
+
+<p>
+She downloaded all of it. The Oak Ridge papers, the European research, the Indian journals, the Chinese Academy of Sciences background documents on the TMSR programme, the site surveys for Wuwei. She read on her laptop at SINAP, on her phone on the metro, on her tablet at home in the evenings while her mother watched television in the next room, the blue light of the screen at odds with the warmer light from the television, the two rooms conducting their entirely different activities in the specific companionable silence of people who live together and have found the shape of coexistence.
+</p>
+
+<p>
+She video-called her father in Beijing, who was still at Peking University and who had followed her career with the particular pride of a physicist whose child has chosen physics — not the simple pride of parental approval but the more complex pride of a fellow professional who can assess the quality of the choice. She told him about the TMSR programme in the technical language they shared, which was the language they had always used, and he asked good questions and she answered them and he said, at the end: this is important work, Mei Lin. Do it well. She said she would.
+</p>
+
+<div class="section-break">· · ·</div>
+
+<p>
+Wuwei was a city of half a million people in the Hexi Corridor, which was the narrow strip of land between the Qilian Mountains to the south and the Beishan Mountains to the north through which the ancient Silk Road had passed, through which travellers and merchants and armies had been moving for two thousand years, and through which the train from Lanzhou arrived on a Tuesday morning in late October carrying Mei Lin and two large suitcases and a backpack containing her laptop and a stack of printed papers and a thermos of green tea that had gone cold somewhere in Gansu Province.
+</p>
+
+<p>
+She had expected the desert to be emptier than it was. She had thought Gobi, and she had thought the Gobi of photographs — the vast open nothing, the dunes, the extraordinary absence. What she found was a landscape that was arid and stark but was not empty — it was full of the evidence of human presence at various scales and various centuries, the ancient beacon towers of the Han Dynasty visible on the ridgelines, the modern highway running parallel to the railway line, wind farms on the plain to the north, their turbines turning in the constant wind that came off the mountains, the desert's version of the energy question being answered by a different technology a few kilometres from where she was going to spend the next several years answering it by another. The sky was the one thing that matched the imagination — enormous, the blue of high altitude and dry air, a blue so definite it seemed more decided than sky usually seemed, a sky that had committed to being blue in a way that the sky over Shanghai, with its pollution haze and its weather variability, had never quite managed.
+</p>
+
+<p>
+The SINAP facility occupied a site in the industrial park to the east of the city — a campus of low buildings set back from the road behind a perimeter fence, functional and plain, a facility that announced its purpose as research and its budget as government without elaborating on either. The dormitory block where Mei Lin would live was at the edge of the campus — a building that could have been a mid-range business hotel in any Chinese city, identical corridors and identical doors and the specific clean anonymity of accommodation that has been designed to be adequate rather than comfortable. Her room was on the third floor, with a window that faced north toward the mountains, which were visible on clear days as a white line along the horizon, the snow on their upper slopes present even in October.
+</p>
+
+<p>
+She put her suitcases on the floor and sat on the edge of the bed and looked at the mountains for a while. Her phone had four bars of signal, which was better than she had expected. She sent a WeChat photo of the mountain view to her mother with the message: <em>arrived safely. the mountains are beautiful. the room is fine.</em> Her mother replied within two minutes: <em>Are you eating properly? Is there a canteen?</em> She replied: <em>yes there is a canteen. I am fine. stop worrying.</em> Her mother sent back a photograph of a bowl of congee, which required no caption.
+</p>
+
+<p>
+She smiled and put the phone down and began to unpack.
+</p>
+
+<div class="section-break">· · ·</div>
+
+<p>
+The TMSR team that she joined in October 2011 consisted of forty-seven people, which felt small for the scale of what they were being asked to build and large for the size of the available laboratory space. The team's leader was a man named Dr. Xu Wei, who was fifty-five and had spent his career in reactor physics and who had the specific authority of someone who has been given a mandate he has been working toward for a long time and is now focused entirely on executing it rather than on explaining or justifying it. He ran tight meetings. He expected preparation. He did not explain things twice. Mei Lin registered this in her first week and adjusted her working style accordingly, which was not a difficult adjustment — she had been trained by Chen, who had similar expectations, and she had never been the kind of person who needed things explained twice.
+</p>
+
+<p>
+She was assigned to the chemistry team, which was responsible for the salt mixture — the specific composition of the lithium fluoride and beryllium fluoride and uranium fluoride and, eventually, thorium fluoride that would constitute the reactor's liquid fuel. It was the part of the programme most directly connected to her expertise and also the part that sat at the intersection of the most fundamental design questions. The salt mixture was not merely the fuel. It was the coolant, the moderator, the medium through which the fission products were distributed and managed. Get the chemistry wrong and the reactor did not work. Get it nearly right and the reactor worked until the cumulative effect of the chemistry's imperfections produced a failure mode that took months to diagnose and years to correct. Get it right — and right meant right across an enormous range of temperatures and neutron flux conditions and chemical equilibria — and the reactor would do what the MSRE had done in 1965 and what it had continued doing for four years: run, and circulate, and sustain its chain reaction, and convert the thorium in the salt into uranium-233 that could be used to sustain future chain reactions.
+</p>
+
+<div class="science-note">
+The lithium fluoride and beryllium fluoride mixture that formed the base of the TMSR salt was a substance with a long chemical history and a short reactor history. It was called FLiBe, a contraction of its components, and it had the properties that made it suitable for reactor use: it was liquid at the operating temperatures the reactor would reach, it was chemically stable under radiation, it was a reasonable moderator of neutrons, and it had a low enough tendency to absorb neutrons that it did not significantly impede the chain reaction. To this base mixture the uranium fluoride was added — a small proportion, enough to provide the initial fissile material to start the chain reaction. The thorium fluoride came later, once the reactor was operating, dissolved into the circulating salt at concentrations that the breeding calculations specified. The conversion chain then proceeded in the flowing liquid: thorium-232 absorbed a neutron and became thorium-233, which decayed to protactinium-233, which decayed again to uranium-233. The uranium-233, fissile and energetic, contributed to the chain reaction that was already running. The reactor was both consuming and creating its own fuel, simultaneously, in the same liquid, as it ran.
+</div>
+
+<p>
+Mei Lin spent her first months at Wuwei on the laboratory work that preceded the reactor — experiments on small samples of the salt mixture, measuring its properties under controlled conditions, validating the thermodynamic models against the MSRE data and against the more recent computational work that the Chinese programme had been doing for several years in preparation for the experimental phase. It was careful, incremental work, the kind that produced small results that mattered precisely because each one was a confirmation or a complication of what the models predicted, a step in the process of building confidence in the salt chemistry before committing it to an operating reactor.
+</p>
+
+<p>
+She worked in the laboratory from eight in the morning until whatever time in the evening the work reached a natural stopping point, which was sometimes six o'clock and sometimes ten o'clock and occasionally, in the weeks when a particular measurement series was running and the data was coming in and needed to be processed before it aged, two in the morning. She ate in the canteen, where the food was competent and institutional and nothing like her mother's cooking, and she appreciated it in the way that you appreciate adequate things when you are working hard and hunger is a practical problem rather than an aesthetic one. She watched CCTV news on the canteen television sometimes, in the evenings when she ate late — news from a China that was building things at a pace and scale that the rest of the world watched with reactions ranging from admiration to alarm, a China that had, in the year she arrived at Wuwei, overtaken Japan to become the world's second largest economy and was proceeding with the confidence of a country that has decided what it is going to do and is in the process of doing it.
+</p>
+
+<p>
+The TMSR was part of that confidence. Not a secret programme — the Chinese Academy of Sciences had announced it — but a quiet one, proceeding without the international fanfare that might have accompanied a comparable announcement from an American institution, because the Chinese programme did not require international validation to proceed and because the people running it understood that the validation would come from the results rather than from the announcement.
+</p>
+
+<p>
+In the evenings, in her room with the mountain view, she read. The Oak Ridge papers, again, in sections, returning to the parts that were directly relevant to the current phase of the work. The MSRE experimental logs, which the Oak Ridge archive had digitised and which were available as scanned documents — Weinberg's handwriting in the margins, occasional annotations in other hands, the accumulated record of a programme that had been run with extraordinary care by people who understood that they were doing something that had never been done before and that doing it carefully was the minimum the work deserved.
+</p>
+
+<p>
+She had found, in the archive, a photograph of Weinberg. It had been taken sometime in the 1960s, at Oak Ridge — a man in a white shirt at a desk, surrounded by papers, looking not at the camera but at something to the left of it, something outside the frame. He looked like a man in the middle of a thought. She had saved the photograph to her phone without entirely knowing why, and it appeared sometimes when she was scrolling through her camera roll — between photographs of the Wuwei mountains and WeChat screenshots and pictures of her father's apartment in Beijing — and she would pause at it briefly, this man in a white shirt in a photograph from sixty years ago, and then continue scrolling.
+</p>
+
+<div class="section-break">· · ·</div>
+
+<p>
+In December 2011, two months after her arrival at Wuwei, she had a conversation with her supervisor — not Xu Wei, who was several levels above her in the programme's hierarchy, but her direct team leader, a woman named Dr. Zhang Li who was forty and had the efficient, unsentimental manner of someone who has been running research teams for long enough to have stopped performing leadership and started practising it. Zhang Li was one of the few people at Wuwei who knew the full history of the Oak Ridge programme in detail, and she and Mei Lin had fallen into the habit of eating lunch together on the days when neither of them had meetings that ran over.
+</p>
+
+<p>
+The conversation, on a cold December afternoon in the canteen with the Wuwei mountains white in the window behind them, was about the corrosion data. Mei Lin had been working on characterising the behaviour of the salt mixture against candidate structural materials — the metals and alloys that would form the reactor's containment and piping — and the data was producing some results that were in line with the MSRE experience and some that were not, in ways that needed to be understood before they became design problems rather than laboratory observations.
+</p>
+
+<p>
+They talked through the data. Zhang Li asked good questions. At the end, when the technical conversation had reached its natural stopping point, Zhang Li said: "You have been reading the Oak Ridge papers carefully."
+</p>
+
+<p>
+"Yes."
+</p>
+
+<p>
+"And?"
+</p>
+
+<p>
+Mei Lin considered how to say what she wanted to say, which was a question that had been assembling itself for two months. "They knew what they had," she said. "They understood it. The summary is — it's very clear. The problem was not the science."
+</p>
+
+<p>
+"No," Zhang Li said. "The problem was not the science."
+</p>
+
+<p>
+"So we are here because they stopped." Mei Lin said this not as a complaint or a grievance — she said it as an observation, in the neutral register of someone stating a fact and following it to where it leads. "We are building on a foundation that existed forty-two years ago and was abandoned. And nobody has done this in between."
+</p>
+
+<p>
+"Nobody with a serious programme," Zhang Li said. "There has been theoretical work. Small experiments. Nothing at this scale."
+</p>
+
+<p>
+"Why China?" Mei Lin asked. "Why now?"
+</p>
+
+<p>
+Zhang Li looked at her with the slight smile of someone who has been asked the right question by the right person at the right stage of their understanding. "Because the science was always available," she said. "Because China needed a long-term energy strategy that did not depend on uranium imports. Because our thorium reserves in Inner Mongolia are substantial. And because" — she paused — "someone read the same documents you have been reading and decided that the gap between what was known and what was being done was a gap worth closing." She picked up her chopsticks. "Also because China can fund a decade-long experimental programme and not cancel it after two years when the political priorities change. That matters. More than people usually say."
+</p>
+
+<p>
+Mei Lin thought about this. She thought about Weinberg and his AEC budget meetings and the direction the funding had moved in the late 1960s. She thought about the photograph on her phone — the man in the white shirt looking at something outside the frame. She thought about what it meant that the documents had been sitting in a Tennessee archive since 1969 and had taken forty-two years and a Chinese government decision to become a reactor again.
+</p>
+
+<p>
+She thought about the discomfort she had felt in March, in the Shanghai office, reading the summary for the first time — the question of inheritance, of whether this work was hers to claim. She had set it aside then and it had stayed set aside, mostly, but it surfaced occasionally in the quiet moments, the way unresolved questions surface when you are honest with yourself.
+</p>
+
+<div class="interior">
+The answer she had arrived at, over the two months since, was not a clean answer. It was more precise than clean: the work was hers because she was doing it, because the doing of it required everything she had and would require more as it proceeded, because the gap in the history did not diminish the difficulty of what she was being asked to do now, which was real difficulty, the difficulty of actual experiments with actual materials in an actual desert where the wind came off the Qilian Mountains at forty kilometres an hour and the salt chemistry did not care about the historical narrative and produced its results on its own terms regardless of how many people had tried to understand it before. You did not inherit the difficulty. You inherited the foundation. The difficulty was entirely yours.
+</div>
+
+<p>
+She finished her lunch. She went back to the laboratory. The corrosion data was still on her screen, mid-analysis, waiting for the afternoon's attention.
+</p>
+
+<div class="section-break">· · ·</div>
+
+<p>
+By the end of 2011 the construction design was finalised and the site preparation had begun — the excavation of the underground chambers that would house the reactor and its systems, the laying of the foundations, the beginning of the long process of turning the design into the physical thing that the design described. Mei Lin was not involved in the construction directly, but she could see it from the laboratory windows — the earth movers and the concrete trucks and the cranes that were assembling the infrastructure around the hole in the ground that would become, in three years, the building that housed the reactor. The Gobi Desert was being modified, in this corner of it, by a programme that had decided to build something that had last been built in Tennessee in the 1960s and that had not been built anywhere since.
+</p>
+
+<p>
+She called her father on a Sunday in December, a video call on her laptop, his face on the screen with the Peking University bookshelves behind him that she had known all her life. She told him about the corrosion work, about the salt chemistry results, about the construction beginning. He listened with the attention he had always given her scientific work, asking the questions that showed he was following rather than simply hearing, and at the end he said: "You sound like you are exactly where you should be."
+</p>
+
+<p>
+She thought about this after the call ended, sitting in her room with the mountains dark in the window now, the stars beginning to appear over the Gobi — the stars as they actually were, uncorrected by the light of the city, more of them than she had ever seen in Shanghai or Beijing, the sky full of what had always been there and was simply not usually visible. She had been looking at these stars most evenings since October and she was not yet entirely accustomed to them, which she took as a sign that she was still paying attention rather than habituating, which was the right state to be in.
+</p>
+
+<p>
+She was exactly where she should be. She had not known she needed someone else to say it, but she found, when her father said it, that she had needed it and that it had arrived at the right time.
+</p>
+
+<p>
+She opened her laptop. The corrosion data was still open in one tab. In another tab, the Oak Ridge archive. She had been reading, over the past week, the experimental logs from 1968 — the last full year of the MSRE's operation, the year when Weinberg had understood that the shutdown was coming and had kept the reactor running anyway, gathering every piece of data it could still produce. The logs were meticulous. The measurements were dense with the specific care of people who understand that what they are writing down will be the last record of what this particular reactor does and that the record should be as complete as possible.
+</p>
+
+<p>
+She read for an hour. Then she closed the laptop and turned off the light and lay in the dark, the stars moving in the window as the earth turned, the mountains invisible but present in the darkness, the desert silent in the specific way of a very large place that has absorbed the day's wind and is now waiting for tomorrow's.
+</p>
+
+<p>
+Somewhere in the excavated ground outside, the foundations were being laid. In three years there would be a reactor in that ground. In a decade, perhaps, there would be results that built on Weinberg's results and that went further, that answered the questions he had not lived to answer, that advanced the work from feasibility to readiness, from the last entry in the archive to the first entry in a new one.
+</p>
+
+<p>
+She was not thinking about any of that, lying in the dark. She was thinking about nothing in particular, which is what the mind does when it has worked hard and been given what it needs and is allowing itself, briefly, to simply be where it is. The stars moved. The desert was still. The foundation work continued in the cold ground below the building she was sleeping in.
+</p>
+
+<p>
+In the morning she would go back to the laboratory. There was more data to analyse. There was always more data to analyse. That was the work. She had chosen it and it had chosen her and they were, as her father had said, where they should be.
+</p>
+
+<div class="chapter-footer">
+  <div class="footer-left">The 90th Element</div>
+  <div class="footer-right">Chapter Eight — Shanghai and Wuwei, 2011</div>
+</div>
+
+</body>
+</html>
