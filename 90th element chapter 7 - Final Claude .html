@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 90th Element — Chapter Seven</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Josefin+Sans:wght@200;300;400&display=swap');
+
+  :root {
+    --ink: #1a1a1a;
+    --gold: #b8972a;
+    --dim: #555;
+    --rule: #d0c8b0;
+    --bg: #faf8f4;
+    --accent: #f2ede3;
+    --dark: #12121e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    line-height: 2.0;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 70px 40px 140px;
+  }
+
+  .book-header {
+    text-align: center;
+    margin-bottom: 70px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .book-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+  .book-number {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 64px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .chapter-header { margin-bottom: 56px; }
+  .chapter-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .chapter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .chapter-date {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--dim);
+    margin-bottom: 32px;
+  }
+  .chapter-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 40px;
+  }
+  .epigraph {
+    font-style: italic;
+    font-size: 17px;
+    color: var(--dim);
+    border-left: 2px solid var(--rule);
+    padding-left: 20px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+  }
+
+  /* Time/location marker — gold centred, consistent with earlier chapters */
+  .time-marker {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin: 60px 0 36px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  p {
+    margin-bottom: 28px;
+    font-weight: 300;
+    color: #1e1e1e;
+    font-size: 19px;
+    line-height: 2.0;
+  }
+
+  .section-break {
+    text-align: center;
+    margin: 52px 0;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 0.4em;
+  }
+
+  .science-note {
+    background: var(--accent);
+    border-left: 2px solid var(--gold);
+    padding: 22px 28px;
+    margin: 36px 0;
+    font-size: 17px;
+    line-height: 1.85;
+    font-style: italic;
+    color: #333;
+  }
+
+  .interior {
+    font-size: 21px;
+    font-style: italic;
+    color: var(--ink);
+    text-align: center;
+    padding: 36px 40px;
+    margin: 44px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .document-aside {
+    background: var(--accent);
+    border-left: 2px solid var(--gold);
+    padding: 24px 32px;
+    margin: 44px 0;
+    font-size: 17px;
+    line-height: 1.85;
+    color: #333;
+  }
+  .document-aside .doc-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .document-aside p {
+    font-style: italic;
+    font-size: 17px;
+    margin-bottom: 14px;
+    color: #333;
+  }
+
+  .refrain {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 300;
+    text-align: center;
+    color: var(--ink);
+    padding: 36px 40px;
+    margin: 52px 0;
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    line-height: 1.6;
+  }
+
+  .chapter-footer {
+    margin-top: 90px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .footer-right {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+</style>
+</head>
+<body>
+
+<div class="book-header">
+  <div class="book-title">The 90th Element</div>
+  <div class="book-number">90</div>
+</div>
+
+<div class="chapter-header">
+  <span class="chapter-label">Chapter Seven</span>
+  <div class="chapter-title">Washington<br>and Vienna,<br>1995–2005</div>
+  <div class="chapter-date">1995 – 2005</div>
+  <div class="chapter-rule"></div>
+  <div class="epigraph">"The rules of the game had been written by the people who were already winning it. The women who understood this negotiated carefully, from within, and kept the longer argument alive in the documents nobody read."</div>
+</div>
+
+<div class="time-marker">Oak Ridge, Tennessee &nbsp;·&nbsp; October 1969 – October 2006 &nbsp;·&nbsp; Alvin Weinberg</div>
+
+<p>
+The international order that governed nuclear energy in the last decade of the twentieth century was, like most international orders, a structure that had been built to solve a specific problem and had, in the solving, created the architecture within which all subsequent problems would have to be addressed whether or not that architecture was well suited to them. The problem it had been built to solve was proliferation — the spread of nuclear weapons capability from the countries that had demonstrated it to the countries that had not — and the mechanism it had developed was the Nuclear Non-Proliferation Treaty, signed in 1968, monitored by the International Atomic Energy Agency in Vienna, enforced by the Nuclear Suppliers Group's export controls. It was a uranium order. Every element of its design — the enrichment safeguards, the reprocessing controls, the fuel supply agreements — assumed uranium as the substance around which nuclear civilisation was organised.
+</p>
+
+<p>
+Alvin Weinberg knew, from the evening of November 1969 when he locked the MSRE notebooks in his desk, that the data he was archiving pointed toward a different order. One that did not need to assume uranium. He could not make the rooms speak that language. He could only make the data permanent and trust that someone, eventually, would come for it.
+</p>
+
+<p>
+He retired in 1973. He gave speeches. He wrote. He watched the light water reactor become the global standard with the specific patience of a man who is certain he is right and uncertain whether it will matter. In the evenings he played the Beethoven late quartets — the ones composed in deafness, interior music, sound that existed only in the mind of the person creating it.
+</p>
+
+<p>
+He watched the Pokhran-II tests on television in May 1998, eighty-four years old, in the chair by the window where he did most of his reading. He watched the diplomatic response cycle through the same footage — sanctions, disapproval, the machinery of the uranium order operating with brisk institutional efficiency. He understood what he was watching at a level the television could not convey. India had done what India had done in part because the international order had made no space for what India was actually trying to do — a civilian programme designed from its foundations to be weapons-resistant, pointed in exactly the direction he had pointed the MSRE in 1965. He understood this and he had, by then, almost nobody left to say it to.
+</p>
+
+<p>
+He turned off the television. He picked up a history of the atomic age — well-researched, thorough, that discussed the MSRE in three paragraphs on page 412 — and read until the light was gone and he needed the lamp.
+</p>
+
+<p>
+He sat with the lamp on for a while before he resumed reading. He thought about the archive, and the notebooks in their folders, and the people who had not yet come for them. He had thought, when he filed the papers in 1969, about the future in general terms — some future physicist, some future programme, the indefinite audience of people who might eventually find the work useful. Sitting in the lamplight in 1998, watching a world that still hadn't found it, he thought about the future more specifically. The generation that would actually close this gap would be younger than his students. They would come from countries he hadn't worked in. And given the way the institutions were slowly, haltingly beginning to change — given the women he now saw in the conferences he still occasionally attended, the names he saw on the papers coming out of Vienna and Delhi and Beijing, the slow shift in who was doing the technical work — they might not look like the people who had built the MSRE at all.
+</p>
+
+<p>
+He thought this was probably a good thing. Fresh eyes saw what trained eyes had learned to stop seeing.
+</p>
+
+<p>
+He died on October the eighteenth, 2006. He was ninety-one years old. His obituaries described him as a founder of nuclear reactor science, a tireless advocate for reactor safety. Several mentioned the MSRE. None mentioned thorium by name. His notebooks — eight of them, plus the final summary — were donated to the Oak Ridge archive. They were made available to researchers. Indefinitely, as he had told Loeb. Indefinitely.
+</p>
+
+<div class="section-break">· · ·</div>
+
+<div class="time-marker">New Delhi &nbsp;·&nbsp; Ministry of External Affairs &nbsp;·&nbsp; 1995 – 2005 &nbsp;·&nbsp; Nalini Srinivasan</div>
+
+<p>
+Nalini Srinivasan had grown up in a house in Mylapore, Chennai, where the morning began with Carnatic music from the radio in the kitchen and the evening ended with her father reading aloud from the newspaper in Tamil at the dining table, translating as he went for the benefit of her younger siblings who had not yet caught up. The house was three streets from the Kapaleeshwarar temple. The smell of jasmine and incense was as ordinary as air. Her mother taught mathematics at a women's college a kilometre away, cycling to work six days a week on a bicycle that was twenty years old and had never needed replacing because it was maintained with the same methodical care her mother brought to everything.
+</p>
+
+<p>
+The expectation in that house was not that Nalini would become a diplomat. The expectation was that she would become excellent at whatever she chose and that she would choose something serious. Her mother's opinion, never stated as an instruction, was that serious work was the only work worth doing, and that the world having opinions about what serious work looked like for a woman was a fact to be noted and set aside. Her father's opinion, which he did state, was that a good analytical mind was the most portable thing a person could own and that she should develop hers without limit and without apology.
+</p>
+
+<p>
+She had read physics at Stella Maris College, one of the few women's colleges in Madras that treated the sciences as seriously as the humanities. She had been one of four women in her year who went on to postgraduate work in physics — and one of two who stayed in science long enough to publish. When she took the IFS examination in 1979 and was placed first in her cohort, her father had taken the family to dinner at a restaurant they could not entirely afford, which was his highest form of celebration.
+</p>
+
+<p>
+She had been posted to the nuclear desk in 1982. In twelve years she had become, without seeking the designation, the person in the ministry who understood the technical side of the nuclear file more completely than anyone else. This was in part because of her physics training. It was also because she was a woman in a ministry where the senior men, when technical documents arrived, were more likely to pass them to her than to read them themselves — an arrangement that disadvantaged her in meeting rooms and advantaged her in the actual understanding of the problem.
+</p>
+
+<p>
+She had noticed, without particular bitterness, that the nuclear programmes she was negotiating on behalf of — India's, the countries she negotiated with, the IAEA itself — were almost entirely staffed by men at the levels where decisions were made. The scientists she dealt with at the DAE were men. The IAEA department heads were men. The State Department officials across the table were men. Women appeared in the technical staff, in the support roles, occasionally in the middle ranks. The architecture of the rooms had been built before women had been admitted to them in significant numbers, and the rooms still carried the shape of what they had been designed for.
+</p>
+
+<div class="interior">
+She thought about this occasionally — in the specific way that a person thinks about a structural condition rather than a personal grievance — as something that was true and that had consequences and that was, very slowly, changing. Her mother had been one of three women physics faculty at her college in 1965. There were eleven now. The IAEA had hired its first woman department head in 1994. Progress existed. It was simply slow in the way that the rearrangement of rooms was always slow — the furniture moved after the people who had chosen it had retired, and the people who moved it were still partly shaped by the rooms they had grown up in.
+</div>
+
+<p>
+What she could not say in the rooms where she worked — the thing she had understood since 1989 when she had first read the three-stage programme documents in their entirety — was this: India's nuclear programme was not a proliferation problem dressed up as a civilian programme. It was a civilian programme dressed up as a proliferation problem by the architecture of a safeguards system that had been designed without India's specific geology in mind. The uranium order saw India as a state that had weapons and wanted more. The thorium logic saw India as a state that had a coastline full of a different element and had been working for forty years to build a programme that would eventually make it irrelevant whether anyone would sell them uranium at all.
+</p>
+
+<p>
+She had read the three-stage programme documents in 1989, early in her career, and had understood them completely — the logic of the stages, the role of thorium, the fuel cycle that closed in Stage 3. She had understood, with the clarity of someone who has read a well-designed plan, that the programme was correct. She had also understood, immediately and without illusion, that this was not how the international community operated. The international community operated on the uranium cycle, had built its safeguards around the uranium cycle, and was not going to reorganise itself around a different fuel cycle because India's resource situation made a different fuel cycle more logical.
+</p>
+
+<p>
+So she negotiated on uranium terms. She negotiated access to uranium supply, modifications to safeguards arrangements, adjustments to the NSG guidelines, the specific conditions under which India could participate in international nuclear cooperation despite its non-signatory status under the NPT. She did this work carefully and well. She never said, in any of the rooms where she did this work, what she understood perfectly clearly from the documents she had been reading since 1989.
+</p>
+
+<p>
+She said it once, obliquely, to her supervisor — a senior diplomat named Krishnamurthy who had managed the nuclear file for longer than she had been in the service. She had raised the question of whether India's negotiating position could be strengthened by making the thorium programme's long-term logic more visible in the international conversation. Krishnamurthy had listened with the patience of a man who had heard many good ideas that were not deployable in the current environment. "The thorium argument is correct," he had said. "It is also completely unusable at this moment. We will lose ground, not gain it. The argument will become usable when the programme is further advanced. When there is something to point to." He had paused. "In the meantime, we negotiate what we can negotiate."
+</p>
+
+<p>
+She had accepted this. It was correct. She had returned to her desk and the draft agreement and the uranium terms.
+</p>
+
+<p>
+On the evening of the eleventh of November 1997, working late on the sixth revision of a bilateral nuclear cooperation framework, she had the draft open on her desk alongside the latest DAE status report on the PFBR design programme. She read the DAE summary — the design progress, the thorium blanket, the breeding ratio calculations, the projection of when the PFBR would produce enough U-233 to begin making Stage 3 credible — and sat with both documents at once.
+</p>
+
+<div class="interior">
+In twenty years, perhaps thirty, the argument becomes usable. There will be a fast breeder running at Kalpakkam, uranium-233 in the fuel cycle, something to point to. The people negotiating then will be able to make the case that cannot be made now. And some of them, she thought — some of the people building the reactor, some of the people who would one day make that case — would be women. The number was still too small. The rooms were still the wrong shape. But the number was growing, in the laboratories and the design offices, and that too was a long relay, running at its own pace.
+</div>
+
+<p>
+She put the DAE summary in her files. She returned to the draft. She worked until midnight. The agreement was not resolved that evening. These things were never resolved in a single evening. They required the patience of someone who understood that the negotiable present and the longer future were both real, and that neither could wait for the other.
+</p>
+
+<p>
+She went home. In the morning the draft was still on her desk. She picked up her pen and continued.
+</p>
+
+<div class="section-break">· · ·</div>
+
+<div class="time-marker">Vienna &nbsp;·&nbsp; International Atomic Energy Agency &nbsp;·&nbsp; March 2001 &nbsp;·&nbsp; Katarina Voss</div>
+
+<p>
+Dr. Katarina Voss had worked at the IAEA for nine years, in the department that dealt with the technical aspects of the civilian nuclear fuel cycle. She was Austrian, a reactor physicist by training, and had come to the IAEA from a research position at the Technical University of Vienna because the IAEA's work was international in a way that academic research was not. She had been the first woman hired at her seniority level in the department. This had been noted at the time by the head of department in his welcome remarks — he had meant it as a compliment, and she had received it as a description of a fact, which was a distinction she had learned to navigate without making anyone uncomfortable.
+</p>
+
+<p>
+In the years since, two more women had joined the department at comparable levels. The pace was not fast. The department had twenty-three technical staff. Voss had once counted the women at a large international reactor safety conference — three hundred and forty delegates, nineteen women, most of them in support or communications roles. She had noted this in the back of her conference notebook without comment and had not revisited it. It was the kind of number that was useful to have recorded and that there was no immediate occasion to use.
+</p>
+
+<p>
+In early 2001 she was conducting a routine technical review of alternative reactor concepts — a periodic literature survey to ensure the department's technical knowledge remained current. In the course of searching the published literature on thorium fuel cycles, which had been attracting modest renewed interest, she found the Oak Ridge archive. Specifically, she found the MSRE final summary — ORNL-4812 — the document Weinberg had written on the afternoon of the shutdown in November 1969.
+</p>
+
+<p>
+She read it with the attention of a physicist reading experimental work in her own field. The fluoride salt chemistry, the fission product behaviour, the corrosion data, the thorium conversion results — she read these as a technician, evaluating methodology and conclusions. But it was not the technical sections that stayed with her. It was the summary at the end.
+</p>
+
+<div class="document-aside">
+  <span class="doc-label">From the MSRE Final Summary — ORNL-4812</span>
+  <p>The experiment has demonstrated the technical feasibility of the molten fluoride salt reactor concept. The fuel salt system operated reliably over extended periods. Fission product behaviour in the liquid fuel was characterised in detail. The results support the conclusion that a molten salt reactor operating on a thorium fuel cycle is technically achievable at larger scale, subject to resolution of materials corrosion questions and development of continuous fuel processing capability.</p>
+  <p>It worked. The fuel salt circulated. The chain reaction sustained itself. The thorium conversion chemistry proceeded as predicted. What remains is engineering, not physics.</p>
+</div>
+
+<p>
+She read this and sat with it. The writing had a quality she had not encountered in technical documents before — precise and factual and carrying, in the precision and the factuality, something else. The weight of a conclusion that the work had arrived at and that the work's ending had not invalidated. She recognised the quality. It was the writing of a person who had spent years building something and had then been required to dismantle it, and who had chosen, in the dismantling, to make the record as complete and as permanent as possible. She had read papers by men who had lost their funding before. Most of them had not written like this. Most of them had written with the compressed, careful language of people managing their own disappointment in a professional context. This was different. This was the writing of someone who had decided, before they began, not to be disappointed — who had decided that the audience was the future and that the future was patient and that the record was the thing.
+</p>
+
+<p>
+She noted the date: 1969. She noted the gap between that date and her present: thirty-two years. She noted that the engineering challenges identified in the summary had not, in those thirty-two years, been systematically addressed by any major national programme. She wrote in her review notes: <em>MSRE results (1965–69) represent the most complete experimental dataset on liquid-fuelled thorium conversion reactor operation. No comparable experimental programme has been conducted since. The technical feasibility conclusions of ORNL-4812 have not been challenged in the subsequent literature. The gap between demonstrated feasibility and programme development is not explained by technical factors.</em>
+</p>
+
+<p>
+She paused. She read that last sentence back. She thought about the conference notebook and the number nineteen out of three hundred and forty. She thought about Weinberg writing in an empty building in Tennessee in November 1969, making the record permanent for an audience he couldn't see. She thought: there are different kinds of gaps between what is known and what is done. Technical gaps. Political gaps. The gap that is simply the gap between the people who are present and the people who have not yet arrived.
+</p>
+
+<p>
+She continued her review. She moved to the next item on her literature list. The review was completed two weeks later, filed with the department, available to IAEA staff and member states.
+</p>
+
+<p>
+Nobody who read her notes in the years that followed changed anything as a result of reading them. The note about the unexplained gap sat in the file, accurate and unacted upon, like many accurate observations in the files of international organisations whose mandate is to monitor what exists rather than to build what does not.
+</p>
+
+<div class="refrain">
+It worked. That was never the problem.
+</div>
+
+<div class="section-break">· · ·</div>
+
+<div class="time-marker">Washington D.C. &nbsp;·&nbsp; State Department &nbsp;·&nbsp; September 2004 &nbsp;·&nbsp; Margaret Howell</div>
+
+<p>
+Margaret Howell had been at the State Department for sixteen years, in the Bureau of International Security and Nonproliferation. She had a doctorate in international relations from Georgetown and had written her dissertation on the NPT's safeguards architecture — specifically, on the gap between the treaty's stated disarmament objectives and its practical operation as a non-proliferation management tool. Her dissertation committee had found this analysis politically sophisticated and technically underdeveloped. She had returned from that defence and enrolled in an evening course in nuclear engineering at GWU, which she completed in eighteen months while working full-time, because she had decided that if she was going to spend her career in this room she was going to understand what the room was actually managing.
+</p>
+
+<p>
+She was, in 2004, one of three women at senior level in the bureau. The bureau had forty-two professional staff. She had not counted them the way Voss had counted the conference delegates — she had simply absorbed the ratio as a feature of the landscape, the way you absorbed the fact that the good offices had windows and the junior offices did not. You noted it, you worked within it, you did not allow it to become the organising principle of your career while remaining aware that it was, quietly, organising certain other things.
+</p>
+
+<p>
+The September 2004 briefing was a preparatory session for what would become the Indo-US nuclear deal — the framework that Nalini Srinivasan's ministry had been working toward, in various forms, for the better part of a decade. Howell was leading the Bureau's preparation. She had assigned a team of three analysts to produce the India background document and had reviewed their draft with the specific attention of someone who understood that the document would shape how a complex negotiation was framed before it began.
+</p>
+
+<p>
+The document was thorough on the weapons programme, the reactor history, the safeguards question, the NPT framework. It mentioned the three-stage programme in a single paragraph, noting that India had a long-term plan for thorium utilisation but that the plan was in its early stages and its relevance to the current negotiation was limited. Howell had read this paragraph and added a marginal note: <em>expand — what is the three-stage logic? what is the thorium endgame?</em> The analyst who received the note had added two sentences. The two sentences described the stages accurately. They did not explain that thorium's conversion to uranium-233 produced a fissile material structurally difficult to use in weapons. They did not explain that a programme built around thorium was, by design, a programme pointed away from weapons rather than toward them.
+</p>
+
+<p>
+Howell had read the revised paragraph and noted that it was better than the original and still incomplete and that there was not, in the timeline of a briefing preparation, sufficient time to make it complete. She had filed this under the category of things that were true and unaddressed and that she would return to in a different context.
+</p>
+
+<p>
+The briefing proceeded. The questions were good questions — safeguards conditions, export control arrangements, the specific terms under which civilian nuclear cooperation could proceed without providing cover for weapons development. These were the right questions within the framework. The framework did not generate a question about thorium.
+</p>
+
+<p>
+After the briefing she walked back to her office along the corridor overlooking the central courtyard, where the afternoon fountain ran. She was thinking about a conversation she had had the previous year with a colleague at the IAEA — not Voss, another technical officer — who had mentioned, in passing, that the IAEA's technical files contained an interesting literature review on alternative reactor concepts that had apparently sat unread since 2001. She had made a note to follow it up. She had not yet followed it up.
+</p>
+
+<div class="interior">
+She thought: the rooms are built for a particular conversation and the conversation has its own momentum and the momentum is very difficult to interrupt from inside the room. The women who are now in these rooms are not the women who built them. We inherited the architecture. We can move furniture. We cannot, in the time available to any individual career, rebuild the floor plan. What we can do is note what the floor plan is missing, and make the note carefully, and trust that the noting is not nothing.
+</div>
+
+<p>
+The Indo-US nuclear deal was signed in July 2005. It was a significant achievement — a framework that brought India into civilian nuclear cooperation with the international community despite its non-NPT status, that secured uranium supply arrangements, that opened channels closed since 1974. Nalini Srinivasan was in the room when the framework was finalised. Margaret Howell had been part of the American team for the final two rounds of negotiation. They had not spoken directly. They had been, across the table from each other, careful and professional and working from documents that described the same programme in different languages.
+</p>
+
+<p>
+After it was done, Howell sat at her desk and wrote the follow-up note she had been meaning to write to the IAEA technical officer. She asked for the title and reference number of the 2001 literature review. The reply came two days later: Department of Nuclear Energy technical survey, March 2001, lead author K. Voss. Attached.
+</p>
+
+<p>
+She read it on a Thursday afternoon. She read Voss's final note — <em>the gap between demonstrated feasibility and programme development is not explained by technical factors</em> — and sat with it for a moment. Then she forwarded it to her analyst with a single line: for the three-stage briefing update when we next have occasion.
+</p>
+
+<p>
+She did not know that in a building she had never visited, in a city she had passed through once at a conference, Nalini Srinivasan had been working toward the same understanding from the other side of the table for the better part of twenty years.
+</p>
+
+<p>
+She did not know that in an archive in Tennessee, the notebooks of a man she had never heard of sat in their catalogued folders, patient and available, waiting for the programme that was already, in the Gobi Desert six thousand kilometres from Vienna, beginning to move toward them.
+</p>
+
+<div class="section-break">· · ·</div>
+
+<p>
+Three women in three cities, each carrying a piece of the same picture. None of them knew the others held the adjacent pieces. The archive connected them — Weinberg's data, Voss's review, the briefing note Howell had filed, the reactor Nalini had been protecting in her negotiations for twenty years — but the archive was not a room where they could sit together and spread the pieces on a table.
+</p>
+
+<p>
+The rooms they worked in had not been built for that kind of conversation. Not yet. The furniture was moving. The floor plan was slow.
+</p>
+
+<p>
+In the Gobi Desert, six thousand kilometres from Vienna, a government had been reading the same archived documents that had sat unacted upon in Tennessee for thirty-five years, and had decided — quietly, without announcement, beginning in 2011 — to find out if the rooms' conversation could be bypassed entirely.
+</p>
+
+<div class="chapter-footer">
+  <div class="footer-left">The 90th Element</div>
+  <div class="footer-right">Chapter Seven — Washington and Vienna, 1995–2005</div>
+</div>
+
+</body>
+</html>
