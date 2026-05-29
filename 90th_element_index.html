@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 90th Element — Index</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Josefin+Sans:wght@200;300;400&display=swap');
+
+  :root {
+    --ink: #1a1a1a;
+    --gold: #b8972a;
+    --dim: #555;
+    --rule: #d0c8b0;
+    --bg: #faf8f4;
+    --accent: #f2ede3;
+    --dark: #12121e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    line-height: 2.0;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 70px 40px 140px;
+  }
+
+  /* ── Book header ── */
+  .book-header {
+    text-align: center;
+    margin-bottom: 70px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .book-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+  .book-number {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 64px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .book-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Index label ── */
+  .index-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 56px;
+    display: block;
+  }
+
+  /* ── Movement block ── */
+  .movement {
+    margin-bottom: 72px;
+  }
+  .movement-header {
+    text-align: center;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 44px;
+  }
+  .movement-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 9px;
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .movement-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .movement-span {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--dim);
+    display: block;
+  }
+
+  /* ── Chapter row ── */
+  .chapter-row {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 0 28px;
+    align-items: start;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .chapter-row:first-of-type {
+    border-top: none;
+  }
+
+  .chapter-number {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    padding-top: 4px;
+  }
+
+  .chapter-body {}
+
+  .chapter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .chapter-date {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .chapter-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--dim);
+    line-height: 1.7;
+  }
+
+  /* ── Footer ── */
+  .index-footer {
+    margin-top: 80px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .footer-right {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+</style>
+</head>
+<body>
+
+<!-- Book header -->
+<div class="book-header">
+  <div class="book-title">The 90th Element</div>
+  <div class="book-number">90</div>
+  <div class="book-subtitle">A Novel in Three Movements &nbsp;·&nbsp; Krishna Prashanth</div>
+</div>
+
+<span class="index-label">Contents</span>
+
+<!-- ── MOVEMENT ONE ── -->
+<div class="movement">
+  <div class="movement-header">
+    <span class="movement-label">Movement One</span>
+    <div class="movement-title">The Dream</div>
+    <span class="movement-span">1954 – 1974</span>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">I</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Geneva, August 1954</div>
+      <span class="chapter-date">August 8 – 20, 1954</span>
+      <div class="chapter-desc">At the world's first atomic energy conference, Homi Bhabha does the arithmetic on India's uranium reserves and draws three boxes connected by arrows in a hotel notebook.</div>
+    </div>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">II</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Trombay, 1955–1960</div>
+      <span class="chapter-date">1955 – 1960</span>
+      <div class="chapter-desc">A young engineer named Arjun Nair arrives at Bhabha's new laboratory on a hill above Bombay harbour, and India's first reactor goes critical on a Monday morning.</div>
+    </div>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">III</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Oak Ridge, 1965–1969</div>
+      <span class="chapter-date">June 1965 – November 1969</span>
+      <div class="chapter-desc">In Tennessee, Alvin Weinberg's molten salt reactor works perfectly — and is shut down anyway, because the question was never whether it worked.</div>
+    </div>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">IV</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Mont Blanc, January 1966</div>
+      <span class="chapter-date">January 24, 1966</span>
+      <div class="chapter-desc">Bhabha boards a flight to Geneva with a briefcase full of calculations he expects to discuss next week; Arjun inherits the unfinished folder left on his desk.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MOVEMENT TWO ── -->
+<div class="movement">
+  <div class="movement-header">
+    <span class="movement-label">Movement Two</span>
+    <div class="movement-title">The Long Silence</div>
+    <span class="movement-span">1974 – 2011</span>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">V</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Pokhran, May 1974</div>
+      <span class="chapter-date">May 18, 1974</span>
+      <div class="chapter-desc">India's nuclear test closes the international doors that the three-stage programme needed open; Arjun watches from Trombay as his son Vikram begins looking toward Canada.</div>
+    </div>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">VI</div>
+    <div class="chapter-body">
+      <div class="chapter-title">The Invisible Decades</div>
+      <span class="chapter-date">1974 – 2000</span>
+      <div class="chapter-desc">Three snapshots across twenty-six years of work that history does not record — the calculations, the decisions, the patience that accumulates a programme one Tuesday at a time.</div>
+    </div>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">VII</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Washington and Vienna, 1995–2005</div>
+      <span class="chapter-date">1995 – 2005</span>
+      <div class="chapter-desc">Three women in three cities — a diplomat in Delhi, a physicist in Vienna, an official in Washington — each holding a piece of the same picture, in rooms not yet built for the conversation that would assemble it.</div>
+    </div>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">VIII</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Shanghai and Wuwei, 2011</div>
+      <span class="chapter-date">March – December 2011</span>
+      <div class="chapter-desc">A young Chinese physicist named Mei Lin downloads the fifty-year-old Oak Ridge results in forty-one seconds, wrestles with the question of inheritance, and boards a train to the Gobi Desert.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MOVEMENT THREE ── -->
+<div class="movement">
+  <div class="movement-header">
+    <span class="movement-label">Movement Three</span>
+    <div class="movement-title">The Awakening</div>
+    <span class="movement-span">2011 – 2026</span>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">IX</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Kalpakkam, 2014–2022</div>
+      <span class="chapter-date">2014 – 2022</span>
+      <div class="chapter-desc">Arjun comes out of retirement to solve a weld problem nobody else can find, holds a thorium rod in his gloved hands in a clean room, and takes a video call from his son in Vancouver during a pandemic.</div>
+    </div>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">X</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Wuwei, October 2023</div>
+      <span class="chapter-date">October 11, 2023</span>
+      <div class="chapter-desc">Mei Lin's reactor achieves criticality — the first molten salt reactor anywhere in the world since Oak Ridge in 1965; in Albuquerque, the last man who was there in 1965 reads the news over his second cup of coffee.</div>
+    </div>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">XI</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Wuwei and Kalpakkam, 2025–2026</div>
+      <span class="chapter-date">November 2025 – March 2026</span>
+      <div class="chapter-desc">China confirms the first thorium-to-uranium conversion; Loeb writes to Mei Lin; Arjun waits in Chennai for Rajan's call; the fuel loading at Kalpakkam reaches completion.</div>
+    </div>
+  </div>
+
+  <div class="chapter-row">
+    <div class="chapter-number">XII</div>
+    <div class="chapter-body">
+      <div class="chapter-title">Kalpakkam, April 6, 2026</div>
+      <span class="chapter-date">April 6, 2026</span>
+      <div class="chapter-desc">The Prototype Fast Breeder Reactor achieves first criticality; seventy-two years close in a single morning; a child on the Kerala beach holds dark sand in her hands and watches it fall.</div>
+    </div>
+  </div>
+</div>
+
+<div class="index-footer">
+  <div class="footer-left">The 90th Element · Krishna Prashanth</div>
+  <div class="footer-right">Contents</div>
+</div>
+
+</body>
+</html>
